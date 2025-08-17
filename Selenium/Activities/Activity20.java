@@ -5,8 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class Activity19 {
-    public static void main(String[] args) {
+public class Activity20 {
+    public static void main(String[] args) throws InterruptedException {
         // Create a new instance of the Firefox driver
         WebDriver driver = new FirefoxDriver();
 
@@ -16,21 +16,20 @@ public class Activity19 {
         System.out.println("Page title: " + driver.getTitle());
 
         // Find and click the button to open the alert
-        driver.findElement(By.id("confirm")).click();
+        driver.findElement(By.id("prompt")).click();
 
         // Switch focus to the alert
-        Alert confirmAlert = driver.switchTo().alert();
+        Alert promtAlert = driver.switchTo().alert();
 
         // Print the text in the alert
-        String alertText = confirmAlert.getText();
+        String alertText = promtAlert.getText();
         System.out.println("Text in alert: " + alertText);
+        // Type into the alert
+        promtAlert.sendKeys("Awesome!");
+        Thread.sleep(5000);
 
         // Close the alert by clicking OK
-        confirmAlert.accept();
-
-        // Can also close the alert by clicking Cancel
-        // confirmAlert.dismiss();
-
+        promtAlert.accept();
         // Print the message
         System.out.println(driver.findElement(By.id("result")).getText());
 
